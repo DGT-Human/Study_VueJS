@@ -1,51 +1,54 @@
 <script setup>
-// khai bao bien
-const message = 'Hello Vue 3'
-const rawHtml = '<div><h1>title</h1><span style="color: red">This should be red.</span></div>'
-const buttonID = 'button-id'
-const buttonClass = 'btn btn-primary'
-const isButtonDisabled = false
-const objectOfAttrs = {
-  id: 'container',
-  class: 'wrapper',
-  style: {
-    color: 'red',
-    fontSize: '20px'
-  }
+import { nextTick,ref } from 'vue'
+// import { reactive } from 'vue' //reactive giống như ref nhưng cho object
+//
+// export default {
+//   // `setup` là một hook đặc biệt dành cho Composition API.
+//   setup() {
+//     const count = ref(0)
+//
+//     // export ref cho mẫu
+//     return {
+//       count
+//     }
+//   }
+// }
+// const object = reactive({
+//   count: 2,
+//   user: {
+//     age: 20
+//   },
+//   array: [1,2,3]
+// })
+
+// const change = () => {
+//   // object.value.count++
+//   // object.value.user.age++
+//   // object.value.array.push(4)
+//   object.count++
+//   object.user.age++
+//   object.array.push(4)
+// }
+const count = ref(0)
+// count.value++
+const increment = async() => { //async để chờ nextTick
+  count.value++
+  console.log(document.getElementById('count').innerText)
+  await nextTick() //chờ đến khi DOM được cập nhật
+  console.log(document.getElementById('count').innerText)
 }
-const number = 0
-const listString = 'a,b,c,d,e,f,g,h,i,j'
-const convertTold = (data) => data.split(',').reverse().join('-') //reverse la dao nguoc chuoi
-const attributeName = 'href'
-const url = 'https://google.com'
-
-
-
-function sayHello(){
-  alert('Hello')
-}
-
 </script>
 
 <template>
-  <h1>Syntax</h1>
-  <p>Message: {{ message }}</p>
-  <span v-html="rawHtml"></span>
-<!--  // v-bind la cach khai bao thuoc tinh-->
-  <button v-bind:id="buttonID" :class="buttonClass" :disabled="isButtonDisabled">{{ isButtonDisabled ? 'Disabled' : 'Click here' }}</button>
-  <button :id="buttonID" :class="buttonClass" >Click</button>
-  <button v-bind="objectOfAttrs" > Click here!!</button>
-  <button :id = "convertTold(listString)">Number: {{ number * 2 }}</button>
-<!--Đối Số Động-->
-  <a v-bind:[attributeName]="url">Click</a>
-<!--Gọi hàm-->
-  <a v-on:click="sayHello"> Click </a>
-
-  <!-- cách viết tắt -->
-<!--  <a @[attributeName]="url"> Click </a>-->
-
-
-  
+<div>
+  <h1 id = "count"> Count: {{ count }}</h1>
+<!--  <h1> Count: {{ object.count }}</h1>-->
+<!--  <h1> age: {{ object.user.age }}</h1>-->
+<!--  <h1> age: {{ object.array }}</h1>-->
+<!--  <button v-on:click="increment">Increment</button>-->
+<!--  <button @click="change">Change</button>-->
+  <button @click="increment">Change</button>
+</div>
 </template>
 
 
