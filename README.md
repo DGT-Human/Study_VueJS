@@ -1,3 +1,4 @@
 # Study_VueJS
 ## In this project, I uploaded code while I was learning VueJS 📓
-![image](https://github.com/user-attachments/assets/353e10e4-e0ec-4f1f-b777-3bf0a6917d71)
+![image](https://github.com/user-attachments/assets/654aada7-34e2-4325-8bae-06a4f8c929fa)
+
