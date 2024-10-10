@@ -43,9 +43,6 @@ function sayHello(){
 
   <!-- cách viết tắt -->
 <!--  <a @[attributeName]="url"> Click </a>-->
-
-
-
 </template>
 
 
